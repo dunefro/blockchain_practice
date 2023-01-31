@@ -71,6 +71,10 @@ app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 blockchain = Blockchain()
 
+@app.route('/healthz',methods = ['GET'])
+def healthz():
+    return "Ok", 200
+
 @app.route('/mine_block',methods = ['GET'])
 def mine_block():
     previous_block = blockchain.get_previous_block()
